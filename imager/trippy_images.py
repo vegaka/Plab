@@ -1,4 +1,4 @@
-import imager2
+from imager.imager2 import Imager
 from PIL import Image
 from PIL import ImageFilter
 from PIL import ImageEnhance
@@ -47,7 +47,7 @@ class TrippyImages():
                 pixel = (newPixel[0], newPixel[1], newPixel[2])
                 self.imager.set_pixel(i, j, pixel)
 
-im = imager2.Imager("images/einstein.jpeg")
+im = Imager("images/einstein.jpeg")
 trippy = TrippyImages(im)
 trippy.set_image(trippy.emboss())
 trippy.display()
