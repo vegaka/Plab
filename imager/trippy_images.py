@@ -46,36 +46,3 @@ class TrippyImages():
                     newPixel.append(randint(255, 255 + pixel[x]) - pixel[x])
                 pixel = (newPixel[0], newPixel[1], newPixel[2])
                 self.imager.set_pixel(i, j, pixel)
-
-im = Imager("images/einstein.jpeg")
-trippy = TrippyImages(im)
-trippy.set_image(trippy.emboss())
-trippy.display()
-
-'''
-im = Imager("images/einstein.jpeg")
-im.display()
-im.set_image(im.trippy_rotated())
-im.display()
-im.set_image(im.invert_colors())
-im.display()
-im = Imager("images/einstein.jpeg").resize(500,500)
-im.display()
-im = im.tunnel()
-im.set_image(im.invert_colors())
-im.set_image(im.black_white())
-im.set_image(im.trippy_rotated())
-im.display()
-im2 = Imager("images/einstein.jpeg").resize(500,500)
-im2.set_image(im2.invert_colors())
-im = im.morph(im2, alpha=0.5)
-#im.display()
-im.display()
-'''
-'''
-
-im = Imager("images/einstein.jpeg")
-im.display()
-im.randomly_invert_pixels()
-im.display()
-'''
