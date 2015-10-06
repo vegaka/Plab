@@ -1,4 +1,4 @@
-import imager2
+from imager.imager2 import Imager
 from PIL import Image
 from PIL import ImageFilter
 from PIL import ImageEnhance
