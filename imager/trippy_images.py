@@ -45,4 +45,4 @@ class TrippyImages():
                 for x in range(3):
                     newPixel.append(randint(255, 255 + pixel[x]) - pixel[x])
                 pixel = (newPixel[0], newPixel[1], newPixel[2])
-                self.imager.set_pixel(i, j, pixel)
+                self.imager.set_pixel(i, j, pixel)                self.imager.set_pixel(i, j, pixel)
