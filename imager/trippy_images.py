@@ -4,7 +4,7 @@ from PIL import ImageEnhance
 from PIL import ImageOps
 from random import randint
 
-class TrippyImages():
+class TrippyImages(object):
 
     def __init__(self, imager2):
         self.imager = imager2

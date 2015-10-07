@@ -76,5 +76,5 @@ def mosaic2(fid, numberOfTiles):
     return scaled
 
 im1 = mosaic2("images/campus.jpeg", 16)
-im2 = mosaic("images/campus.jpeg", 16)
+im2 = mosaic2("images/campus.jpeg", 16)
 im1.morph(im2).display()
