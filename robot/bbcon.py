@@ -22,5 +22,8 @@ class BBCON(object):
     def deactivate_behavior(self, behavior):
         self.active_behaviors.remove(behavior)
 
+    def get_arbitrator(self):
+        return self.arbitrator
+
     def run_one_timestep(self):
         pass
