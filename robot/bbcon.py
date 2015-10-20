@@ -1,7 +1,9 @@
 from robot.arbitrator import Arbitrator
-
+import time
 
 class BBCON(object):
+
+    TIMESTEP_LENGTH = 250
 
     def __init__(self):
         self.behaviors = set()
@@ -25,5 +27,14 @@ class BBCON(object):
     def get_arbitrator(self):
         return self.arbitrator
 
+    def current_time_millis(self):
+        return int(round(time.time() * 1000))
+
     def run_one_timestep(self):
-        pass
+        start = self.current_time_millis()
+
+        # Do everything in a timestep here
+
+        end = self.current_time_millis()
+        if end - start < self.TIMESTEP_LENGTH:
+            time.sleep((end - start) / 1000)
