@@ -34,11 +34,9 @@ def mosaic(fid, numberOfTiles):
         for z in range(0, new_y, tileScale):
             build_tile(w, z)
 
-
     scaled.display()
 
-def mosaic2(fid, numberOfTiles):
-    image = Imager(fid)
+def mosaic2(image, numberOfTiles):
     x = image.xmax
     y = image.ymax
     tileScale = int(x/numberOfTiles)
@@ -75,6 +73,6 @@ def mosaic2(fid, numberOfTiles):
 
     return scaled
 
-im1 = mosaic2("images/campus.jpeg", 16)
-im2 = mosaic2("images/campus.jpeg", 16)
-im1.morph(im2).display()
+# im1 = mosaic2("images/campus.jpeg", 16)
+# im2 = mosaic2("images/campus.jpeg", 16)
+# im1.morph(im2).display()
