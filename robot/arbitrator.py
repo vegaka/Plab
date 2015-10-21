@@ -31,4 +31,6 @@ class Arbitrator(object):
 
         else:
             weights.sort(key=lambda t: t[0], reverse=True)
-            # Choose behavior at weights[0]
+            chosen_behavior = weights[0]
+            motor_values = chosen_behavior.get_motor_recommendation()
+            self.bbcon.motor.set_motor_values(motor_values)
