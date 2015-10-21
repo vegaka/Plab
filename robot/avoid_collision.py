@@ -26,4 +26,4 @@ class AvoidCollision(object):
         if self.distance <= self.OH_SHIT_DISTANCE:
             return [-self.TURN_SPEED, self.TURN_SPEED]
         else:
-            return [self.speed, self.speed]
+            return [self.SPEED, self.SPEED]
