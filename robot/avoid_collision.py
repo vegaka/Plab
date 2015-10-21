@@ -1,5 +1,5 @@
 __author__ = 'Sander'
-from robot.lib.ultrasonic import Ultrasonic
+from Plab.robot.lib.ultrasonic import Ultrasonic
 
 class AvoidCollision(object):
 
