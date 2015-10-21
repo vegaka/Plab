@@ -3,11 +3,9 @@ from robot.lib.ultrasonic import Ultrasonic
 
 class AvoidCollision(object):
 
-    def __init__(self, max_pri, speed):
-        self.PRIORITY_FACTOR = 10
+    def __init__(self, max_pri):
         self.OH_SHIT_DISTANCE = 15
         self.TURN_SPEED = 1
-        self.SPEED = speed
         self.max_pri = max_pri
         self.sensor = Ultrasonic()
         self.distance = float("inf")
@@ -18,12 +16,12 @@ class AvoidCollision(object):
     def get_weight(self):
         self.update_sensor()
         if self.distance <= self.OH_SHIT_DISTANCE:
-            return self.max_pri * self.PRIORITY_FACTOR
+            return self.max_pri
         else:
-            return (self.max_pri-self.distance) * self.PRIORITY_FACTOR
+            return 0
 
     def get_motor_recommendation(self):
         if self.distance <= self.OH_SHIT_DISTANCE:
             return [-self.TURN_SPEED, self.TURN_SPEED]
         else:
-            return [self.SPEED, self.SPEED]
+            return False
