@@ -35,6 +35,8 @@ class BBCON(object):
         start = self.current_time_millis()
 
         # Do everything in a timestep here
+        for behavior in self.behaviors:
+            behavior.update()
 
         end = self.current_time_millis()
         if end - start < self.TIMESTEP_LENGTH:
