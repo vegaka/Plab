@@ -1,8 +1,7 @@
 from imager.imager2 import Imager
 
 
-def selective_color(fid, color, tolerance):
-    image = Imager(fid)
+def selective_color(image, color, tolerance):
 
     def equal(pix1, pix2):
         l1 = pix1[0]/pix1[1] if pix1[1] != 0 else 0
@@ -14,8 +13,6 @@ def selective_color(fid, color, tolerance):
         equal2 = l2 < s2 + tolerance and l2 > s2 - tolerance
         return not (equal1 and equal2)
 
-
-
     def bw(pixel):
         lum = int((pixel[1] + pixel[2] + pixel[0])/3)
         return lum, lum, lum
@@ -26,8 +23,8 @@ def selective_color(fid, color, tolerance):
             if equal(pixel, color):
                 image.set_pixel(x, y,  bw(pixel))
 
-    image.display()
+    return image
 
 
-selective_color("images/campus.jpeg", (105, 75, 65), 0.4)
+# selective_color("images/campus.jpeg", (105, 75, 65), 0.4)
 
