@@ -1,5 +1,6 @@
-__author__ = 'Sander'
 from robot.lib.ultrasonic import Ultrasonic
+__author__ = 'Sander'
+
 
 class AvoidCollision(object):
 
