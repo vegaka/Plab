@@ -33,8 +33,11 @@ class StayInside(object):
             return False
 
     def compute_turn(self):
-        direction = 0
-        for i in range(-2, 3):
-            if self.values[i+2] <= self.THRESHHOLD:
-                direction += i
-        return [1/direction, -1/direction]
+        l, r = 0, 0
+        for i in range(5):
+            if self.values[i] <= self.THRESHHOLD:
+                if i < 2:
+                        l = 1
+                elif i > 2:
+                        r = 1
+        return [0.5, -0.5] if not l else [-0.5, 0.5]
