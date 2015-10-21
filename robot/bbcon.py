@@ -1,4 +1,5 @@
 from robot.arbitrator import Arbitrator
+from robot.motor import Motor
 import time
 
 class BBCON(object):
@@ -9,7 +10,7 @@ class BBCON(object):
         self.behaviors = set()
         self.active_behaviors = set()
         self.sensors = set()
-        self.motors = set()
+        self.motor = Motor()
         self.arbitrator = Arbitrator()
 
     def add_behavior(self, behavior):
@@ -38,3 +39,8 @@ class BBCON(object):
         end = self.current_time_millis()
         if end - start < self.TIMESTEP_LENGTH:
             time.sleep((end - start) / 1000)
+
+if __name__ == "__main__":
+    bbcon = BBCON()
+    while True:
+        bbcon.run_one_timestep()
