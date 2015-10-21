@@ -28,7 +28,7 @@ class StayInside(object):
     def get_motor_recommendation(self):
         if self.about_to_crash:
             l, r = self.compute_turn()
-            return [l, r]
+            return ([l, r], 0.1)
         else:
             return False
 

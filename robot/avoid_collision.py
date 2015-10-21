@@ -23,6 +23,6 @@ class AvoidCollision(object):
 
     def get_motor_recommendation(self):
         if self.distance <= self.OH_SHIT_DISTANCE:
-            return [-self.TURN_SPEED, self.TURN_SPEED]
+            return ([-self.TURN_SPEED, self.TURN_SPEED], 0.2)
         else:
             return False
