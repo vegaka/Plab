@@ -3,6 +3,7 @@ from arbitrator import Arbitrator
 from motor import Motor
 from avoid_collision import AvoidCollision
 from stay_inside import StayInside
+from forward import Forward
 import time
 
 class BBCON(object):
@@ -47,6 +48,9 @@ class BBCON(object):
             time.sleep((end - start) / 1000)
 
     def initialize_behaviors(self):
+        # Forward
+        self.add_behavior(Forward(self, self.arbitrator.MAX_PRIORITY))
+
         # Avoid collision
         self.add_behavior(AvoidCollision(self, self.arbitrator.MAX_PRIORITY))
 
@@ -62,9 +66,9 @@ if __name__ == "__main__":
     button = ZumoButton()
     button.wait_for_press()
 
-    runstart = bbcon.current_time_millis()
+    runstart = time.time()
     now = runstart
     while now - runstart < 10:
         bbcon.run_one_timestep()
-        now = bbcon.current_time_millis()
+        now = time.time()
 
