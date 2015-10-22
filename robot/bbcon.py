@@ -1,4 +1,9 @@
-from robot.arbitrator import Arbitrator
+from lib.zumo_button import ZumoButton
+from arbitrator import Arbitrator
+from motor import Motor
+from avoid_collision import AvoidCollision
+from stay_inside import StayInside
+from forward import Forward
 import time
 
 class BBCON(object):
@@ -9,7 +14,7 @@ class BBCON(object):
         self.behaviors = set()
         self.active_behaviors = set()
         self.sensors = set()
-        self.motors = set()
+        self.motor = Motor()
         self.arbitrator = Arbitrator()
 
     def add_behavior(self, behavior):
@@ -19,7 +24,7 @@ class BBCON(object):
         self.sensors.add(sensor)
 
     def activate_behavior(self, behavior):
-        self.active_behaviors.remove(behavior)
+        self.active_behaviors.add(behavior)
 
     def deactivate_behavior(self, behavior):
         if behavior in self.active_behaviors:
@@ -34,8 +39,37 @@ class BBCON(object):
     def run_one_timestep(self):
         start = self.current_time_millis()
 
-        # Do everything in a timestep here
+        for behavior in self.behaviors:
+            behavior.update()
+
+        self.arbitrator.choose_action()
 
         end = self.current_time_millis()
         if end - start < self.TIMESTEP_LENGTH:
             time.sleep((end - start) / 1000)
+
+    def initialize_behaviors(self):
+        # Forward
+        self.add_behavior(Forward(self, self.arbitrator.MAX_PRIORITY))
+
+        # Avoid collision
+        self.add_behavior(AvoidCollision(self, self.arbitrator.MAX_PRIORITY))
+
+        # Stay inside
+        self.add_behavior(StayInside(self, self.arbitrator.MAX_PRIORITY))
+
+        # Add searching for red when it is fixed
+
+if __name__ == "__main__":
+    bbcon = BBCON()
+    bbcon.initialize_behaviors()
+
+    button = ZumoButton()
+    button.wait_for_press()
+
+    runstart = time.time()
+    now = runstart
+    while now - runstart < 10:
+        bbcon.run_one_timestep()
+        now = time.time()
+
