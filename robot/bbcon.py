@@ -1,5 +1,6 @@
 from robot.arbitrator import Arbitrator
 from robot.motor import Motor
+from robot.lib.zumo_button import ZumoButton
 import time
 
 class BBCON(object):
@@ -45,5 +46,13 @@ class BBCON(object):
 
 if __name__ == "__main__":
     bbcon = BBCON()
+
+    button = ZumoButton()
+    button.wait_for_press()
+
+    bbcon.motor.set_motor_values([0.5, 0.5], 1)
+
+    '''
     while True:
         bbcon.run_one_timestep()
+    '''
