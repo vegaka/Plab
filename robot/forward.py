@@ -13,4 +13,4 @@ class Forward(object):
         return self.priority
 
     def get_motor_recommendation(self):
-        return [0.5, 0.5], False
+        return [0.2, 0.2], False
