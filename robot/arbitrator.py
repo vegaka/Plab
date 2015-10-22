@@ -4,8 +4,11 @@ class Arbitrator(object):
 
     MAX_PRIORITY = 100
 
-    def __int__(self, bbcon, stochastic=False):
+    def __int__(self, stochastic=False):
         self.stochastic = stochastic
+        self.bbcon = None
+
+    def set_controller(self, bbcon):
         self.bbcon = bbcon
 
     def choose_action(self):

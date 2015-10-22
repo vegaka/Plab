@@ -63,6 +63,7 @@ class BBCON(object):
 if __name__ == "__main__":
     bbcon = BBCON()
     bbcon.initialize_behaviors()
+    bbcon.arbitrator.set_controller(bbcon)
 
     button = ZumoButton()
     button.wait_for_press()
