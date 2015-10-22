@@ -9,24 +9,25 @@ class StayInside(object):
         self.sensor = ReflectanceSensors(auto_calibrate=True)
         self.max_pri = max_pri
         self.TURN_SPEED = 0.5
-        self.THRESHHOLD = 150
+        self.THRESHHOLD = 700
         self.about_to_crash = False
         self.values = [self.sensor.max_val for _ in range(5)]
 
     def update_sensors(self):
         self.sensor.update()
         self.values = self.sensor.get_value()
+        print(self.values, self.sensor.value)
 
     def update(self):
         self.about_to_crash = False
         self.update_sensors()
         for reading in self.values:
-            if reading <= self.THRESHHOLD:
+            if reading >= self.THRESHHOLD:
                 self.BBC.activate_behavior(self)
                 self.about_to_crash = True
                 break
         else:
-            self.BBC.deactive_behavoir(self)
+            self.BBC.deactivate_behavior(self)
 
     def get_weight(self):
         return self.max_pri if self.about_to_crash else 0
@@ -34,7 +35,7 @@ class StayInside(object):
     def get_motor_recommendation(self):
         if self.about_to_crash:
             l, r = self.compute_turn()
-            return ([l, r], 0.1)
+            return ([l, r], 0.5)
         else:
             return (False, None)
 

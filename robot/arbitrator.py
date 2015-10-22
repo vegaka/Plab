@@ -37,5 +37,6 @@ class Arbitrator(object):
             self.activate_behavior(weights[0][1])
 
     def activate_behavior(self, behavior):
+        print(behavior)
         motor_values = behavior.get_motor_recommendation()
         self.bbcon.motor.set_motor_values(motor_values[0], motor_values[1])

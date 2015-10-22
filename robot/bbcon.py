@@ -8,7 +8,7 @@ import time
 
 class BBCON(object):
 
-    TIMESTEP_LENGTH = 250
+    TIMESTEP_LENGTH = 100
 
     def __init__(self):
         self.behaviors = set()
@@ -70,7 +70,8 @@ if __name__ == "__main__":
 
     runstart = time.time()
     now = runstart
-    while now - runstart < 10:
+    while now - runstart < 5:
         bbcon.run_one_timestep()
         now = time.time()
 
+    bbcon.motor.set_motor_values([0, 0], False)

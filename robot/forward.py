@@ -12,5 +12,5 @@ class Forward(object):
     def get_weight(self):
         return self.priority
 
-    def get_motor_reccomendation(self):
+    def get_motor_recommendation(self):
         return [0.5, 0.5], False

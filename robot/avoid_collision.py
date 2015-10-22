@@ -6,7 +6,7 @@ class AvoidCollision(object):
     def __init__(self, BBC,  max_pri):
         self.BBC = BBC
         self.OH_SHIT_DISTANCE = 15
-        self.TURN_SPEED = 1
+        self.TURN_SPEED = 0.5
         self.turn = False
         self.max_pri = max_pri
         self.sensor = Ultrasonic()
@@ -14,6 +14,7 @@ class AvoidCollision(object):
 
     def update_sensor(self):
         self.distance = self.sensor.update()
+        print("Distance: " + str(self.distance))
 
     def update(self):
         self.update_sensor()
@@ -29,6 +30,6 @@ class AvoidCollision(object):
 
     def get_motor_recommendation(self):
         if self.distance <= self.OH_SHIT_DISTANCE:
-            return ([-self.TURN_SPEED, self.TURN_SPEED], 0.2)
+            return ([-self.TURN_SPEED, self.TURN_SPEED], 0.5)
         else:
             return (False, None)
