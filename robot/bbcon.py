@@ -24,7 +24,7 @@ class BBCON(object):
         self.sensors.add(sensor)
 
     def activate_behavior(self, behavior):
-        self.active_behaviors.remove(behavior)
+        self.active_behaviors.add(behavior)
 
     def deactivate_behavior(self, behavior):
         self.active_behaviors.remove(behavior)

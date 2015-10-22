@@ -1,5 +1,4 @@
 from lib.reflectance_sensors import ReflectanceSensors
-from bbcon import BBCON
 __author__ = 'Sander'
 
 
