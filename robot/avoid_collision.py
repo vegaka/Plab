@@ -1,7 +1,6 @@
 from robot.lib.ultrasonic import Ultrasonic
 __author__ = 'Sander'
 
-
 class AvoidCollision(object):
 
     def __init__(self, BBC,  max_pri):
