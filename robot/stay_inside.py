@@ -47,4 +47,4 @@ class StayInside(object):
                         l = 1
                 elif i > 2:
                         r = 1
-        return [0.5, -0.5] if not l else [-0.5, 0.5]
+        return [-0.3, -0.5] if not l else [-0.5, -0.3]
