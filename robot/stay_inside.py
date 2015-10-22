@@ -6,7 +6,7 @@ class StayInside(object):
 
     def __init__(self, BBC, max_pri):
         self.BBC = BBC
-        self.sensor = ReflectanceSensors(auto_calibrate=True)
+        self.sensor = ReflectanceSensors(auto_calibrate=False, min_reading=0, max_reading=1500)
         self.max_pri = max_pri
         self.TURN_SPEED = 0.5
         self.THRESHHOLD = 700
