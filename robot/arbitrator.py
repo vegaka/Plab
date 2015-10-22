@@ -4,7 +4,7 @@ class Arbitrator(object):
 
     MAX_PRIORITY = 100
 
-    def __int__(self, stochastic=False):
+    def __init__(self, stochastic=False):
         self.stochastic = stochastic
         self.bbcon = None
 
