@@ -1,6 +1,6 @@
 __author__ = 'Johannes'
-from Plab.robot.lib.camera import Camera
-from Plab.robot.helpers import Helpers as h
+from lib.camera import Camera
+from helpers import Helpers as h
 
 
 class SearchRed(object):
