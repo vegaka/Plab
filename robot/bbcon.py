@@ -1,6 +1,6 @@
-from robot.arbitrator import Arbitrator
-from robot.motor import Motor
-from robot.lib.zumo_button import ZumoButton
+from lib.zumo_button import ZumoButton
+from arbitrator import Arbitrator
+from motor import Motor
 import time
 
 class BBCON(object):

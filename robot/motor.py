@@ -1,4 +1,4 @@
-from robot.lib.motors import Motors
+from lib.motors import Motors
 
 class Motor(object):
 
