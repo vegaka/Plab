@@ -1,10 +1,12 @@
 from robot.lib.reflectance_sensors import ReflectanceSensors
+from robot.bbcon import BBCON
 __author__ = 'Sander'
 
 
 class StayInside(object):
 
-    def __init__(self, max_pri):
+    def __init__(self, BBC, max_pri):
+        self.BBC = BBC
         self.sensor = ReflectanceSensors(auto_calibrate=True)
         self.max_pri = max_pri
         self.TURN_SPEED = 0.5
@@ -16,25 +18,33 @@ class StayInside(object):
         self.sensor.update()
         self.values = self.sensor.get_value()
 
-    def get_weight(self):
+    def update(self):
         self.about_to_crash = False
         self.update_sensors()
         for reading in self.values:
             if reading <= self.THRESHHOLD:
+                self.BBC.activate_behavior(self)
                 self.about_to_crash = True
-                return self.max_pri
-        return 0
+                break
+        else:
+            self.BBC.deactive_behavoir(self)
+
+    def get_weight(self):
+        return self.max_pri if self.about_to_crash else 0
 
     def get_motor_recommendation(self):
         if self.about_to_crash:
             l, r = self.compute_turn()
-            return [l, r]
+            return ([l, r], 0.1)
         else:
-            return False
+            return (False, None)
 
     def compute_turn(self):
-        direction = 0
-        for i in range(-2, 3):
-            if self.values[i+2] <= self.THRESHHOLD:
-                direction += i
-        return [1/direction, -1/direction]
+        l, r = 0, 0
+        for i in range(5):
+            if self.values[i] <= self.THRESHHOLD:
+                if i < 2:
+                        l = 1
+                elif i > 2:
+                        r = 1
+        return [0.5, -0.5] if not l else [-0.5, 0.5]
