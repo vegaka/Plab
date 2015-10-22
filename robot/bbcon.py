@@ -1,6 +1,8 @@
 from lib.zumo_button import ZumoButton
 from arbitrator import Arbitrator
 from motor import Motor
+from avoid_collision import AvoidCollision
+from stay_inside import StayInside
 import time
 
 class BBCON(object):
@@ -44,15 +46,25 @@ class BBCON(object):
         if end - start < self.TIMESTEP_LENGTH:
             time.sleep((end - start) / 1000)
 
+    def initialize_behaviors(self):
+        # Avoid collision
+        self.add_behavior(AvoidCollision(self, self.arbitrator.MAX_PRIORITY))
+
+        # Stay inside
+        self.add_behavior(StayInside(self, self.arbitrator.MAX_PRIORITY))
+
+        # Add searching for red when it is fixed
+
 if __name__ == "__main__":
     bbcon = BBCON()
+    bbcon.initialize_behaviors()
 
     button = ZumoButton()
     button.wait_for_press()
 
-    bbcon.motor.set_motor_values([0.5, 0.5], 1)
-
-    '''
-    while True:
+    runstart = bbcon.current_time_millis()
+    now = runstart
+    while now - runstart < 10:
         bbcon.run_one_timestep()
-    '''
+        now = bbcon.current_time_millis()
+
