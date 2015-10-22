@@ -21,16 +21,18 @@ class Arbitrator(object):
             old = current = 0
 
             for i in range(len(weights)):
-                current += weights[i]
+                current += weights[i][0]
 
                 if old <= choice < current:
-                    # Choose behavior
+                    self.activate_behavior(weights[i][1])
                     break
 
                 old = current
 
         else:
             weights.sort(key=lambda t: t[0], reverse=True)
-            chosen_behavior = weights[0][1]
-            motor_values = chosen_behavior.get_motor_recommendation()
-            self.bbcon.motor.set_motor_values(motor_values[0], motor_values[1])
+            self.activate_behavior(weights[0][1])
+
+    def activate_behavior(self, behavior):
+        motor_values = behavior.get_motor_recommendation()
+        self.bbcon.motor.set_motor_values(motor_values[0], motor_values[1])

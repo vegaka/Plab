@@ -34,9 +34,10 @@ class BBCON(object):
     def run_one_timestep(self):
         start = self.current_time_millis()
 
-        # Do everything in a timestep here
         for behavior in self.behaviors:
             behavior.update()
+
+        self.arbitrator.choose_action()
 
         end = self.current_time_millis()
         if end - start < self.TIMESTEP_LENGTH:
