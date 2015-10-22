@@ -22,7 +22,8 @@ class BBCON(object):
         self.active_behaviors.remove(behavior)
 
     def deactivate_behavior(self, behavior):
-        self.active_behaviors.remove(behavior)
+        if behavior in self.active_behaviors:
+            self.active_behaviors.remove(behavior)
 
     def get_arbitrator(self):
         return self.arbitrator
