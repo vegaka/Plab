@@ -18,16 +18,19 @@ class StayInside(object):
         self.sensor.update()
         self.values = self.sensor.get_value()
 
-    def get_weight(self):
+    def update(self):
         self.about_to_crash = False
         self.update_sensors()
         for reading in self.values:
             if reading <= self.THRESHHOLD:
                 self.BBC.activate_behavior(self)
                 self.about_to_crash = True
-                return self.max_pri
-        self.BBC.deactive_behavoir(self)
-        return 0
+                break
+        else:
+            self.BBC.deactive_behavoir(self)
+
+    def get_weight(self):
+        return self.max_pri if self.about_to_crash else 0
 
     def get_motor_recommendation(self):
         if self.about_to_crash:
