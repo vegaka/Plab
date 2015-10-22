@@ -1,5 +1,5 @@
-from robot.lib.reflectance_sensors import ReflectanceSensors
-from robot.bbcon import BBCON
+from lib.reflectance_sensors import ReflectanceSensors
+from bbcon import BBCON
 __author__ = 'Sander'
 
 
