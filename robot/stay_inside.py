@@ -6,10 +6,10 @@ class StayInside(object):
 
     def __init__(self, BBC, max_pri):
         self.BBC = BBC
-        self.sensor = ReflectanceSensors(auto_calibrate=False, min_reading=0, max_reading=1500)
+        self.sensor = ReflectanceSensors(auto_calibrate=False, min_reading=0, max_reading=1200)
         self.max_pri = max_pri
         self.TURN_SPEED = 0.5
-        self.THRESHHOLD = 700
+        self.THRESHHOLD = 0.2
         self.about_to_crash = False
         self.values = [self.sensor.max_val for _ in range(5)]
 
@@ -22,7 +22,7 @@ class StayInside(object):
         self.about_to_crash = False
         self.update_sensors()
         for reading in self.values:
-            if reading >= self.THRESHHOLD:
+            if reading <= self.THRESHHOLD:
                 self.BBC.activate_behavior(self)
                 self.about_to_crash = True
                 break
