@@ -16,7 +16,7 @@ class StayInside(object):
     def update_sensors(self):
         self.sensor.update()
         self.values = self.sensor.get_value()
-        print(self.values, self.sensor.value)
+        #print(self.values, self.sensor.value)
 
     def update(self):
         self.about_to_crash = False

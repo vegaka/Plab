@@ -14,7 +14,7 @@ class AvoidCollision(object):
 
     def update_sensor(self):
         self.distance = self.sensor.update()
-        print("Distance: " + str(self.distance))
+        #print("Distance: " + str(self.distance))
 
     def update(self):
         self.update_sensor()

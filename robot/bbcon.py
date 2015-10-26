@@ -61,7 +61,7 @@ class BBCON(object):
         self.add_behavior(StayInside(self, self.arbitrator.MAX_PRIORITY))
 
         # Add searching for red when it is fixed
-        # self.add_behavior(SearchRed(self, self.arbitrator.MAX_PRIORITY))
+        self.add_behavior(SearchRed(self, self.arbitrator.MAX_PRIORITY))
 
 if __name__ == "__main__":
     bbcon = BBCON()
@@ -73,7 +73,7 @@ if __name__ == "__main__":
 
     runstart = time.time()
     now = runstart
-    while now - runstart < 10:
+    while now - runstart < 20:
         bbcon.run_one_timestep()
         now = time.time()
 

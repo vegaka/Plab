@@ -34,6 +34,7 @@ class Arbitrator(object):
 
         else:
             weights.sort(key=lambda t: t[0], reverse=True)
+            print(weights)
             self.activate_behavior(weights[0][1])
 
     def activate_behavior(self, behavior):
