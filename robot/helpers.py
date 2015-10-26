@@ -1,10 +1,10 @@
-import statistics as s
+
 class Helpers:
 
     @staticmethod
     def get_red(image):
-        rth = 30
-        pth = 10
+        rth = 106
+        pth = 35
         rows = []
         sums = []
         total = 0
@@ -16,8 +16,9 @@ class Helpers:
             div = 0
             for x in range(image.xmax):
                 pix = image.get_pixel(x, y)
-                is_red = pix[0] > rth and pix[1] < pth and pix[2] < pth
-                reds.append(is_red)
+                is_red = (pix[0] > rth)
+                not_red = (pix[1]+pix[2])/2 < pth
+                reds.append(is_red and not_red)
                 sum += x*int(is_red)
                 div += int(is_red)
                 numOfPixels += int(is_red)

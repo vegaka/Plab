@@ -5,13 +5,13 @@ from helpers import Helpers as h
 
 class SearchRed(object):
 
-    def __init__(self,red_thr, pollution_thr, speed):
-        self.red_thr = red_thr
-        self.pollution_thr = pollution_thr
+    def __init__(self, BBC, max_pri, speed):
+        self.BBC = BBC
         self.camera = Camera()
         self.image = None
         self.speed = speed
         self.weight = 0
+        self.weight_thr = 20
         self.recommendation = None
 
     def update_sensor(self):
@@ -24,8 +24,16 @@ class SearchRed(object):
         else:
             self.recommendation = [self.speed, self.speed]
 
+    def update(self):
+        self.update_sensor()
+        if self.weight > self.weight_thr:
+            self.BBC.activate_behaviour(self)
+        else:
+            self.BBC.deactivate_behaviour(self)
+
     def get_weight(self):
         return self.weight
 
     def get_motor_recommendation(self):
         return self.recommendation, None
+
