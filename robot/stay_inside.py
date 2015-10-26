@@ -6,10 +6,11 @@ class StayInside(object):
 
     def __init__(self, BBC, max_pri):
         self.BBC = BBC
-        self.sensor = ReflectanceSensors(auto_calibrate=False, min_reading=0, max_reading=1200)
+        self.sensor = ReflectanceSensors(auto_calibrate=False, min_reading=0, max_reading=2000)
+        # self.sensor = ReflectanceSensors(auto_calibrate=True)
         self.max_pri = max_pri
         self.TURN_SPEED = 0.5
-        self.THRESHHOLD = 0.2
+        self.THRESHHOLD = 0.85
         self.about_to_crash = False
         self.values = [self.sensor.max_val for _ in range(5)]
 
@@ -35,7 +36,7 @@ class StayInside(object):
     def get_motor_recommendation(self):
         if self.about_to_crash:
             l, r = self.compute_turn()
-            return ([l, r], 0.5)
+            return ([l, r], 1.0)
         else:
             return (False, None)
 
@@ -47,4 +48,4 @@ class StayInside(object):
                         l = 1
                 elif i > 2:
                         r = 1
-        return [-0.7, -1] if not l else [-1, -0.7]
+        return [-0.1, -0.7] if not l else [-0.7, -0.1]

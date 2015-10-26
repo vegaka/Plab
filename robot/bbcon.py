@@ -8,7 +8,7 @@ import time
 
 class BBCON(object):
 
-    TIMESTEP_LENGTH = 100
+    TIMESTEP_LENGTH = 10
 
     def __init__(self):
         self.behaviors = set()
@@ -46,6 +46,7 @@ class BBCON(object):
 
         end = self.current_time_millis()
         if end - start < self.TIMESTEP_LENGTH:
+            print("Sleep")
             time.sleep((end - start) / 1000)
 
     def initialize_behaviors(self):
@@ -70,7 +71,7 @@ if __name__ == "__main__":
 
     runstart = time.time()
     now = runstart
-    while now - runstart < 5:
+    while now - runstart < 10:
         bbcon.run_one_timestep()
         now = time.time()
 

@@ -5,7 +5,7 @@ class AvoidCollision(object):
 
     def __init__(self, BBC,  max_pri):
         self.BBC = BBC
-        self.OH_SHIT_DISTANCE = 15
+        self.OH_SHIT_DISTANCE = 5
         self.TURN_SPEED = 0.5
         self.turn = False
         self.max_pri = max_pri
