@@ -5,11 +5,11 @@ from helpers import Helpers as h
 
 class SearchRed(object):
 
-    def __init__(self, BBC, max_pri, speed):
+    def __init__(self, BBC, max_pri):
         self.BBC = BBC
         self.camera = Camera()
         self.image = None
-        self.speed = speed
+        self.speed = 0.2
         self.weight = 0
         self.weight_thr = 20
         self.recommendation = None

@@ -4,6 +4,7 @@ from motor import Motor
 from avoid_collision import AvoidCollision
 from stay_inside import StayInside
 from forward import Forward
+from search_red import SearchRed
 import time
 
 class BBCON(object):
@@ -60,6 +61,7 @@ class BBCON(object):
         self.add_behavior(StayInside(self, self.arbitrator.MAX_PRIORITY))
 
         # Add searching for red when it is fixed
+        # self.add_behavior(SearchRed(self, self.arbitrator.MAX_PRIORITY))
 
 if __name__ == "__main__":
     bbcon = BBCON()
