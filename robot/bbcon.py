@@ -9,7 +9,7 @@ import time
 
 class BBCON(object):
 
-    TIMESTEP_LENGTH = 50
+    TIMESTEP_LENGTH = 300
 
     def __init__(self):
         self.behaviors = set()
@@ -46,6 +46,7 @@ class BBCON(object):
         self.arbitrator.choose_action()
 
         end = self.current_time_millis()
+        print(end - start)
         if end - start < self.TIMESTEP_LENGTH:
             print("Sleep")
             time.sleep((end - start) / 1000)
