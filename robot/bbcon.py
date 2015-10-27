@@ -9,7 +9,7 @@ import time
 
 class BBCON(object):
 
-    TIMESTEP_LENGTH = 10
+    TIMESTEP_LENGTH = 50
 
     def __init__(self):
         self.behaviors = set()
@@ -52,7 +52,7 @@ class BBCON(object):
 
     def initialize_behaviors(self):
         # Forward
-        self.add_behavior(Forward(self, self.arbitrator.MAX_PRIORITY))
+        self.add_behavior(Forward(self))
 
         # Avoid collision
         self.add_behavior(AvoidCollision(self, self.arbitrator.MAX_PRIORITY))

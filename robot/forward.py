@@ -2,9 +2,9 @@ __author__ = 'vegard'
 
 class Forward(object):
 
-    def __init__(self, bbcon, MAX_PRI):
+    def __init__(self, bbcon):
         self.bbcon = bbcon
-        self.priority = MAX_PRI / 2
+        self.priority = 1
 
     def update(self):
         self.bbcon.activate_behavior(self)

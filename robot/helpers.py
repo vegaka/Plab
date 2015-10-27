@@ -8,7 +8,7 @@ class Helpers:
         #y = int(image.xmax/2)
         sum = 0
         num = 0
-        thr = 3
+        thr = 2
         reds = []
         for x in range(0, xmax, 16):
             pix = image.getpixel((x, y))
@@ -26,4 +26,4 @@ class Helpers:
         else:
             pos = 0
         print(reds, pos)
-        return (num*16/xmax)*1000, pos
+        return (num*16/xmax) * 100, pos
