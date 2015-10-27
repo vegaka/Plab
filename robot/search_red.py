@@ -28,6 +28,7 @@ class SearchRed(object):
             self.recommendation = [self.speed, self.speed]
 
     def update(self):
+        self.weight = 0
         now = self.BBC.current_time_millis()
         if now - self.last_update > 2000:
             self.update_sensor()
