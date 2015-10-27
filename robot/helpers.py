@@ -1,5 +1,3 @@
-from Plab.imager.imager2 import Imager
-
 class Helpers:
 
     @staticmethod
