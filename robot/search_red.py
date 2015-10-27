@@ -1,6 +1,7 @@
 __author__ = 'Johannes'
 from lib.camera import Camera
 from helpers import Helpers as h
+import time
 
 
 class SearchRed(object):
@@ -14,7 +15,7 @@ class SearchRed(object):
         self.weight_thr = 10
         self.recommendation = None
         self.max_pri = max_pri
-        self.counter = 0
+        self.last_update = 0
 
     def update_sensor(self):
         self.image = self.camera.update()
@@ -27,15 +28,14 @@ class SearchRed(object):
             self.recommendation = [self.speed, self.speed]
 
     def update(self):
-        if self.counter % 4 == 0:
+        now = self.BBC.current_time_millis()
+        if now - self.last_update > 2000:
             self.update_sensor()
             if self.weight > self.weight_thr:
                 self.BBC.activate_behavior(self)
             else:
                 self.BBC.deactivate_behavior(self)
-        else:
-            self.BBC.deactivate_behavior(self)
-        self.counter += 1
+            self.last_update = self.BBC.current_time_millis()
 
     def get_weight(self):
         print("W: " + str(self.weight))
