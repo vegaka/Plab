@@ -25,4 +25,4 @@ class Helpers:
             pos = ((sum/num) - (xmax/2))/(xmax/2)
         else:
             pos = 0
-        return pos, (num/xmax)*1000
+        return (num/xmax)*1000, pos
