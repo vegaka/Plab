@@ -69,12 +69,16 @@ if __name__ == "__main__":
     bbcon.arbitrator.set_controller(bbcon)
 
     button = ZumoButton()
+    x = button.check_pressed()
+    print(x)
     button.wait_for_press()
 
     runstart = time.time()
     now = runstart
-    while now - runstart < 20:
+    button_clicked = False
+    while not button_clicked:
         bbcon.run_one_timestep()
-        now = time.time()
+        button_clicked = not button.check_pressed() == 1
+        print(button_clicked)
 
     bbcon.motor.set_motor_values([0, 0], False)

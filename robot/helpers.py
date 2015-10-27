@@ -8,7 +8,7 @@ class Helpers:
         #y = int(image.xmax/2)
         sum = 0
         num = 0
-        thr = 4
+        thr = 3
         reds = []
         for x in range(0, xmax, 16):
             pix = image.getpixel((x, y))

@@ -36,7 +36,7 @@ class SearchRed(object):
 
     def get_weight(self):
         print("W: " + str(self.weight))
-        return self.weight * self.max_pri
+        return self.weight
 
     def get_motor_recommendation(self):
         print("R: " + str(self.recommendation))

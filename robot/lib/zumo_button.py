@@ -14,3 +14,6 @@ class ZumoButton():
             read_val = wp.digitalRead(22)
         print("Button pressed!!")
 
+    def check_pressed(self):
+        read_val = wp.digitalRead(22)
+        return read_val
