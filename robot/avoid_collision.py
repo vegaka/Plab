@@ -11,18 +11,21 @@ class AvoidCollision(object):
         self.max_pri = max_pri
         self.sensor = Ultrasonic()
         self.distance = float("inf")
+        self.counter = 0
 
     def update_sensor(self):
         self.distance = self.sensor.update()
         #print("Distance: " + str(self.distance))
 
     def update(self):
-        self.update_sensor()
-        if self.distance <= self.OH_SHIT_DISTANCE:
-            self.turn = True
-            self.BBC.activate_behavior(self)
+        if self.counter % 4 == 0:
+            self.update_sensor()
+            if self.distance <= self.OH_SHIT_DISTANCE:
+                self.turn = True
+                self.BBC.activate_behavior(self)
+            else:
+                self.turn = False
         else:
-            self.turn = False
             self.BBC.deactivate_behavior(self)
 
     def get_weight(self):
