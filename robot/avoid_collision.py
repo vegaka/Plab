@@ -18,7 +18,6 @@ class AvoidCollision(object):
         #print("Distance: " + str(self.distance))
 
     def update(self):
-        self.counter += 1
         if self.counter % 4 == 0:
             self.update_sensor()
             if self.distance <= self.OH_SHIT_DISTANCE:
@@ -28,6 +27,7 @@ class AvoidCollision(object):
                 self.turn = False
         else:
             self.BBC.deactivate_behavior(self)
+        self.counter += 1
 
     def get_weight(self):
         return self.max_pri if self.turn else 0
