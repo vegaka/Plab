@@ -27,7 +27,6 @@ class SearchRed(object):
             self.recommendation = [self.speed, self.speed]
 
     def update(self):
-        self.counter += 1
         if self.counter % 4 == 0:
             self.update_sensor()
             if self.weight > self.weight_thr:
@@ -36,6 +35,7 @@ class SearchRed(object):
                 self.BBC.deactivate_behavior(self)
         else:
             self.BBC.deactivate_behavior(self)
+        self.counter += 1
 
     def get_weight(self):
         print("W: " + str(self.weight))
