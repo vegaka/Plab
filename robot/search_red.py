@@ -14,6 +14,7 @@ class SearchRed(object):
         self.weight_thr = 10
         self.recommendation = None
         self.max_pri = max_pri
+        self.counter = 0
 
     def update_sensor(self):
         self.image = self.camera.update()
@@ -26,11 +27,13 @@ class SearchRed(object):
             self.recommendation = [self.speed, self.speed]
 
     def update(self):
-        self.update_sensor()
-        self.BBC.activate_behavior(self)
-        return
-        if self.weight > self.weight_thr:
-            self.BBC.activate_behavior(self)
+        self.counter += 1
+        if self.counter % 4 == 0:
+            self.update_sensor()
+            if self.weight > self.weight_thr:
+                self.BBC.activate_behavior(self)
+            else:
+                self.BBC.deactivate_behavior(self)
         else:
             self.BBC.deactivate_behavior(self)
 
