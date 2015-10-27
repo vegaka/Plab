@@ -19,9 +19,9 @@ class SearchRed(object):
         self.image = self.camera.update()
         self.weight, pos = h.get_red(self.image)
         if pos < 0:
-            self.recommendation = [self.speed-pos, self.speed]
+            self.recommendation = [self.speed, self.speed -(pos/3)]
         elif pos > 0:
-            self.recommendation = [self.speed, self.speed-pos]
+            self.recommendation = [self.speed + (pos/3), self.speed-pos]
         else:
             self.recommendation = [self.speed, self.speed]
 
