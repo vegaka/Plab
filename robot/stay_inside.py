@@ -35,8 +35,8 @@ class StayInside(object):
     def get_motor_recommendation(self):
         if self.about_to_crash:
             if self.values[0] <= self.THRESHHOLD or self.values[1] <= self.THRESHHOLD:
-                return [-1, -0.5], 0.5
+                return [-0.5, -0.1], 0.5
             else:
-                return [-0.5, -1], 0.5
+                return [-0.1, -0.5], 0.5
         else:
             return False, None

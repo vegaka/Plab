@@ -21,9 +21,9 @@ class SearchRed(object):
         self.image = self.camera.update()
         self.weight, pos = h.get_red(self.image)
         if pos < 0:
-            self.recommendation = [self.speed, self.speed - (pos / 2)]
+            self.recommendation = [-self.speed, self.speed - (pos / 2)]
         elif pos > 0:
-            self.recommendation = [self.speed + (pos/2), self.speed]
+            self.recommendation = [self.speed + (pos/2), -self.speed]
         else:
             self.recommendation = [self.speed, self.speed]
 
@@ -44,5 +44,5 @@ class SearchRed(object):
 
     def get_motor_recommendation(self):
         print("R: " + str(self.recommendation))
-        return self.recommendation, None
+        return self.recommendation, 0.4
 

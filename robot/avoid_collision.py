@@ -18,7 +18,7 @@ class AvoidCollision(object):
         #print("Distance: " + str(self.distance))
 
     def update(self):
-        if self.counter % 4 == 0:
+        if self.counter % 2 == 0:
             self.update_sensor()
             if self.distance <= self.OH_SHIT_DISTANCE:
                 self.turn = True
