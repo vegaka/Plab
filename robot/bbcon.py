@@ -61,7 +61,7 @@ class BBCON(object):
         # Stay inside
         self.add_behavior(StayInside(self, self.arbitrator.MAX_PRIORITY))
 
-        # Add searching for red when it is fixed
+        # Search for red
         self.add_behavior(SearchRed(self, self.arbitrator.MAX_PRIORITY))
 
 if __name__ == "__main__":
